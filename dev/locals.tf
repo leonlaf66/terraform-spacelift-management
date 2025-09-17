@@ -18,6 +18,7 @@ locals {
       aws_integration_ids_to_attach = local.aws_integration_ids_to_attach
       git_sparse_checkout_paths     = "common_modules"
       policy_ids                    = ["security-group-port-policy"]
+      context_ids                   = []
     }
   }
 }
