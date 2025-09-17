@@ -82,9 +82,9 @@ variable "common_labels" {
   default     = {}
 }
 
-variable "git_sparse_checkout_paths" {
+variable "additional_project_globs" {
   type        = list(string)
-  description = "A list of paths to check out from the repository, for sparse checkout."
+  description = "Project globs is an optional list of paths to track changes of in addition to the project root."
   default     = []
 }
 

@@ -10,7 +10,7 @@ resource "spacelift_stack" "app" {
   terraform_version                = var.terraform_version
   enable_sensitive_outputs_upload  = var.enable_sensitive_outputs_upload
   enable_well_known_secret_masking = var.enable_well_known_secret_masking
-  git_sparse_checkout_paths        = var.git_sparse_checkout_paths
+  additional_project_globs         = var.additional_project_globs
   space_id                         = var.space_id
   github_action_deploy             = var.github_action_deploy
   labels = toset(
