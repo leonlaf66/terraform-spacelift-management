@@ -26,9 +26,7 @@ output "stack_count" {
   value = length(data.spacelift_stacks.all.stacks)
 }
 
-resource "spacelift_stack" "test" {
-  name       = "test-stack-minimal"
-  repository = "leonlaf66/aws_msk_project"
-  branch     = "main"
-  terraform_version = "1.5.7"
+resource "spacelift_context" "prod-k8s-ie" {
+  description = "Configuration details for the compute cluster in 🇮🇪"
+  name        = "Production cluster (Ireland)"
 }
