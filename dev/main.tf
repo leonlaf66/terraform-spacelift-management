@@ -29,15 +29,6 @@ resource "spacelift_stack" "test" {
 #  space_id   = "aws-dev-01K5CD5P72YQ542KFHQVCZYJDW"
 }
 
-data "spacelift_current_account" "this" {}
-
-output "debug_account" {
-  value = {
-    account_name = data.spacelift_current_account.this.name
-    # This will show which authentication context is active
-  }
-}
-
 resource "spacelift_stack" "test2" {
   name       = "test-stack"
   repository = "leonlaf66/aws_msk_project"
