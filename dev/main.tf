@@ -20,7 +20,11 @@
 #}
 
 
+data "spacelift_stacks" "all" {}
 
+output "stack_count" {
+  value = length(data.spacelift_stacks.all.stacks)
+}
 
 resource "spacelift_stack" "test" {
   name       = "test-stack"
