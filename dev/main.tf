@@ -28,6 +28,6 @@ output "stack_count" {
 
 resource "spacelift_stack" "test" {
   name       = "test-stack-minimal"
-  repository = "leonlaf66/spacelift-demo"
+  repository = "leonlaf66/aws_msk_project"
   branch     = "main"
 }
