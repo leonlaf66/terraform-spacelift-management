@@ -26,8 +26,8 @@ output "stack_count" {
   value = length(data.spacelift_stacks.all.stacks)
 }
 
-resource "spacelift_stack" "test_different_repo" {
-  name       = "test-different-repo"
-  repository = "hashicorp/terraform"  # Public repo
+resource "spacelift_stack" "test" {
+  name       = "test-stack-minimal"
+  repository = "spacelift-demo"
   branch     = "main"
 }
