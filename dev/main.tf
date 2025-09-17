@@ -30,3 +30,9 @@ resource "spacelift_context" "prod-k8s-ie" {
   description = "Configuration details for the compute cluster in 🇮🇪"
   name        = "Production cluster (Ireland)"
 }
+
+resource "spacelift_stack" "test" {
+  name       = "test-stack-minimal"
+  repository = "leonlaf66/spacelift-demo"
+  branch     = "main"
+}
