@@ -26,5 +26,5 @@ resource "spacelift_stack" "test" {
   name       = "test-stack"
   repository = "leonlaf66/spacelift-demo"
   branch     = "main"
-  space_id   = "aws-dev-01K5CD5P72YQ542KFHQVCZYJDW"
+#  space_id   = "aws-dev-01K5CD5P72YQ542KFHQVCZYJDW"
 }
