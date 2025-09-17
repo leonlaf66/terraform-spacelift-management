@@ -37,3 +37,10 @@ output "debug_account" {
     # This will show which authentication context is active
   }
 }
+
+resource "spacelift_stack" "test2" {
+  name       = "test-stack"
+  repository = "leonlaf66/aws_msk_project"
+  branch     = "main"
+#  space_id   = "aws-dev-01K5CD5P72YQ542KFHQVCZYJDW"
+}
