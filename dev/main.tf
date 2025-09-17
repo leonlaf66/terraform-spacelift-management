@@ -30,4 +30,5 @@ resource "spacelift_stack" "test" {
   name       = "test-stack-minimal"
   repository = "leonlaf66/aws_msk_project"
   branch     = "main"
+  terraform_version = "1.5.7"
 }
