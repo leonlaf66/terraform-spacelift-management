@@ -12,7 +12,7 @@ locals {
   stacks = {
     "spacelift-demo" = {
       description                   = "Manages dev infrastructure for the spacelift demo."
-      repository                    = "leonlaf66/spacelift-demo"
+      repository                    = "spacelift-demo"
       project_root                  = local.environment
       github_action_deploy          = local.github_action_deploy
       aws_integration_ids_to_attach = local.aws_integration_ids_to_attach
