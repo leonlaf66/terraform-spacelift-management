@@ -28,6 +28,6 @@ output "stack_count" {
 
 resource "spacelift_stack" "test" {
   name       = "test-stack-minimal"
-  repository = "github.com/leonlaf66/spacelift-demo"
+  repository = "spacelift-demo"
   branch     = "main"
 }
