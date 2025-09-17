@@ -1,5 +1,5 @@
 locals {
-  dev_space_id                  = "my-development-space"
+  dev_space_id                  = "aws-dev-01K5CD5P72YQ542KFHQVCZYJDW"
   dev_branch                    = "main"
   environment                   = "dev"
   github_action_deploy          = true
