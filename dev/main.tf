@@ -26,16 +26,8 @@ output "stack_count" {
   value = length(data.spacelift_stacks.all.stacks)
 }
 
-resource "spacelift_stack" "test" {
-  name       = "test-stack"
-  repository = "leonlaf66/spacelift-demo"
+resource "spacelift_stack" "test_different_repo" {
+  name       = "test-different-repo"
+  repository = "hashicorp/terraform"  # Public repo
   branch     = "main"
-#  space_id   = "aws-dev-01K5CD5P72YQ542KFHQVCZYJDW"
-}
-
-resource "spacelift_stack" "test2" {
-  name       = "test-stack"
-  repository = "leonlaf66/aws_msk_project"
-  branch     = "main"
-#  space_id   = "aws-dev-01K5CD5P72YQ542KFHQVCZYJDW"
 }
