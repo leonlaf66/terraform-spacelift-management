@@ -16,7 +16,7 @@ locals {
       project_root                  = local.environment
       github_action_deploy          = local.github_action_deploy
       aws_integration_ids_to_attach = local.aws_integration_ids_to_attach
-      git_sparse_checkout_paths     = "common_modules"
+      git_sparse_checkout_paths     = ["common_modules"]
       policy_ids                    = ["security-group-port-policy"]
       context_ids                   = []
     }
