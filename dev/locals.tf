@@ -12,11 +12,11 @@ locals {
   stacks = {
     "spacelift-demo" = {
       description                   = "Manages dev infrastructure for the spacelift demo."
-      repository                    = "leonlaf66/terraform-spacelift-demo"
+      repository                    = "leonlaf66/spacelift-demo"
       project_root                  = local.environment
       github_action_deploy          = local.github_action_deploy
       aws_integration_ids_to_attach = local.aws_integration_ids_to_attach
-      additional_project_globs      = ["common_modules/**"]
+      additional_project_globs      = ["common_modules/**/*"]
       policy_ids                    = ["security-group-port-policy"]
       context_ids                   = []
     }
