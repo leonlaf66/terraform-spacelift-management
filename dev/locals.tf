@@ -10,7 +10,7 @@ locals {
   }
 
   stacks = {
-    "spacelift-demo-${local.environment}" = {
+    "spacelift-demo" = {
       description                   = "Manages dev infrastructure for the spacelift demo."
       repository                    = "leonlaf66/terraform-spacelift-demo"
       project_root                  = local.environment

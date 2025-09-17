@@ -37,7 +37,7 @@ variable "space_id" {
 # ------------------------------------------------------------------------------
 # Behavior & Security
 # ------------------------------------------------------------------------------
-variable "autodeploy" {
+variable "auto_deploy" {
   type        = bool
   description = "Whether to automatically deploy changes on the tracked branch."
   default     = false
@@ -119,4 +119,9 @@ variable "aws_attachment_write" {
   type        = bool
   description = "Whether the attached AWS integrations should have write access."
   default     = true
+}
+
+variable "environment" {
+  type        = string
+  description = "The project environment"
 }

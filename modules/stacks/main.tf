@@ -1,6 +1,6 @@
 resource "spacelift_stack" "app" {
   name         = var.stack_name
-  description  = var.description != "" ? var.description : "The ${var.environment} environment for the ${var.app_name} application."
+  description  = var.description != "" ? var.description : "The ${var.environment} environment for the ${var.stack_name} application."
   repository   = var.repository
   branch       = var.branch
   project_root = var.project_root

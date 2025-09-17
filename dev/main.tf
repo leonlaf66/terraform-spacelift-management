@@ -2,12 +2,13 @@ module "spacelift_stacks" {
   source = "../modules/stacks"
 
   for_each     = local.stacks
-  stack_name   = each.key
+  stack_name   = "${each.key}-${local.environment}"
   repository   = each.value.repository
   branch       = local.dev_branch
   space_id     = local.dev_space_id
   project_root = each.value.project_root
   description  = each.value.description
+  environment  = local.environment
 
   common_labels = merge(
     local.common_labels,
@@ -16,5 +17,4 @@ module "spacelift_stacks" {
 
   policy_ids_to_attach  = each.value.policy_ids
   context_ids_to_attach = each.value.context_ids
-  autodeploy            = false
 }
