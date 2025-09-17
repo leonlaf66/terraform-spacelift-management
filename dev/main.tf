@@ -1,0 +1,20 @@
+module "spacelift_stacks" {
+  source = "../modules/stacks"
+
+  for_each     = local.stacks
+  stack_name   = each.key
+  repository   = each.value.repository
+  branch       = local.dev_branch
+  space_id     = local.dev_space_id
+  project_root = each.value.project_root
+  description  = each.value.description
+
+  common_labels = merge(
+    local.common_labels,
+    { "app" = each.key }
+  )
+
+  policy_ids_to_attach  = each.value.policy_ids
+  context_ids_to_attach = each.value.context_ids
+  autodeploy            = false
+}
