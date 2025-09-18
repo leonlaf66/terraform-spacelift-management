@@ -1,5 +1,6 @@
 module "spacelift_stacks" {
   source = "../modules/stacks"
+  for_each                 = local.stacks
   stack_name               = "${each.key}-${local.environment}"
   repository               = each.value.repository
   branch                   = local.dev_branch
