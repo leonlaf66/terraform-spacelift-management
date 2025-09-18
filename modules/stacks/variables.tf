@@ -14,7 +14,7 @@ variable "repository" {
 variable "source_name" {
   type        = string
   default     = "spaelift-demo"
-  description = "The name of the spacelift source code"
+  description = "the name of the spacelift source code"
 }
 
 variable "git_name" {
