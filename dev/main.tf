@@ -32,7 +32,8 @@ resource "spacelift_context" "prod-k8s-ie" {
 }
 
 resource "spacelift_stack" "test" {
-  name       = "test-stack-minimal"
-  repository = "leonlaf66/spacelift-demo"
-  branch     = "main"
+  name           = "test"
+  administrative = true
+  repository     = "leonlaf66/spacelift-demo"
+  branch         = "main"
 }
