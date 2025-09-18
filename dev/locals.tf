@@ -4,7 +4,7 @@ locals {
   environment                   = "dev"
   github_action_deploy          = true
   dev_aws_integration_id           = "01K48A89P24CVYM1MVETR4YZ19"
-  security_group_ingress_policy_id = ""
+  security_group_ingress_policy_id = "security-group-port-policy"
   common_labels                 = {
     "env"        = "dev",
     "managed-by" = "terraform"
