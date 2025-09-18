@@ -11,6 +11,18 @@ variable "repository" {
   description = "The name of the Git repository for the stack (e.g., 'my-app-infra')."
 }
 
+variable "source_name" {
+  type        = string
+  default     = "spacelift-demo"
+  description = "The name of the spacelift source code"
+}
+
+variable "git_name" {
+  type        = string
+  default     = "leonlaf66"
+  description = "The name of the github account"
+}
+
 variable "branch" {
   type        = string
   default     = "main"

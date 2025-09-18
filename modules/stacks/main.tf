@@ -1,6 +1,10 @@
 resource "spacelift_stack" "app" {
   name         = var.stack_name
   description  = var.description != "" ? var.description : "The ${var.environment} environment for the ${var.stack_name} application."
+  github_enterprise {
+    id        = var.source_name
+    namespace = var.git_name
+  }
   repository   = var.repository
   branch       = var.branch
   project_root = var.project_root
