@@ -32,9 +32,10 @@ resource "spacelift_context" "prod-k8s-ie" {
 }
 
 resource "spacelift_stack" "test" {
-  name           = "test"
+  name           = "tf-create-repro"
   administrative = true
-  repository     = "leonlaf66/spacelift-demo"
+  repository     = "leonlaf66/spacelift-demo"   # exact case, no .git
   branch         = "main"
   space_id       = "root"
+  project_root   = "/"                          # avoids other validation noise
 }
