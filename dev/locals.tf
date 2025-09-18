@@ -3,7 +3,8 @@ locals {
   dev_branch                    = "main"
   environment                   = "dev"
   github_action_deploy          = true
-  aws_integration_ids_to_attach = ["01K48A89P24CVYM1MVETR4YZ19"]
+  dev_aws_integration_id           = "01K48A89P24CVYM1MVETR4YZ19"
+  security_group_ingress_policy_id = ""
   common_labels                 = {
     "env"        = "dev",
     "managed-by" = "terraform"
@@ -15,10 +16,9 @@ locals {
       repository                    = "spacelift-demo"
       project_root                  = local.environment
       github_action_deploy          = local.github_action_deploy
-      aws_integration_ids_to_attach = local.aws_integration_ids_to_attach
       additional_project_globs      = ["common_modules/**/*"]
-      policy_ids                    = ["security-group-port-policy"]
-      context_ids                   = []
+      policy_ids_to_attach          = [local.security_group_ingress_policy_id] 
+      aws_integration_ids_to_attach = [local.dev_aws_integration_id]
     }
   }
 }

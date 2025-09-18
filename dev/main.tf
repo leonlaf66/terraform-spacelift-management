@@ -15,7 +15,7 @@ module "spacelift_stacks" {
     { "app" = each.key }
   )
 
-  policy_ids_to_attach          = each.value.policy_ids
-  context_ids_to_attach         = each.value.context_ids
-  aws_integration_ids_to_attach =  local.aws_integration_ids_to_attach
+  policy_ids_to_attach          = lookup(each.value, "policy_ids_to_attach", [])
+  context_ids_to_attach         = lookup(each.value, "context_ids_to_attach", [])
+  aws_integration_ids_to_attach = lookup(each.value, "aws_integration_ids_to_attach", [])
 }
