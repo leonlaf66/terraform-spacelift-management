@@ -31,11 +31,16 @@ resource "spacelift_context" "prod-k8s-ie" {
   name        = "Production cluster (Ireland)"
 }
 
-resource "spacelift_stack" "test" {
-  name           = "tf-create-repro"
+locals {
+  # guard against hidden whitespace/newlines
+  repo = trimspace("leonlaf66/spacelift-demo")
+}
+
+resource "spacelift_stack" "repro" {
+  name           = "repro-install-check"
   administrative = true
-  repository     = "leonlaf66/spacelift-demo"   # exact case, no .git
+  repository     = local.repo
   branch         = "main"
-  space_id       = "root"
-  project_root   = "/"                          # avoids other validation noise
+  space_id       = "root"      # force root to avoid any ambiguity
+  project_root   = "/"         # avoids other validation noise
 }
