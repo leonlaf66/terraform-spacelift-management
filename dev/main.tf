@@ -36,4 +36,5 @@ resource "spacelift_stack" "test" {
   administrative = true
   repository     = "leonlaf66/spacelift-demo"
   branch         = "main"
+  space_id       = "root"
 }
