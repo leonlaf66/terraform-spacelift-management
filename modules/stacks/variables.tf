@@ -85,6 +85,16 @@ variable "github_action_deploy" {
   default     = false
 }
 
+variable "terraform_workflow_tool" {
+  type        = string
+  default     = "TERRAFORM_FOSS"
+}
+
+variable "terraform_smart_sanitization" {
+  type        = bool
+  default     = true
+}
+
 # ------------------------------------------------------------------------------
 # Advanced & Organizational
 # ------------------------------------------------------------------------------

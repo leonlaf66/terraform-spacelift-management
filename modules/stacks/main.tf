@@ -17,6 +17,9 @@ resource "spacelift_stack" "app" {
   additional_project_globs         = var.additional_project_globs
   space_id                         = var.space_id
   github_action_deploy             = var.github_action_deploy
+  terraform_workflow_tool          = var.terraform_workflow_tool
+  terraform_smart_sanitization     = var.terraform_smart_sanitization
+
   labels = toset(
     [for k, v in var.common_labels : "${k}:${v}"]
   )
