@@ -9,6 +9,7 @@ module "spacelift_stacks" {
   description              = each.value.description
   environment              = local.environment
   additional_project_globs = each.value.additional_project_globs
+  github_action_deploy     = local.github_action_deploy
 
   common_labels = merge(
     local.common_labels,
