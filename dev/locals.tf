@@ -19,7 +19,7 @@ locals {
       policy_ids_to_attach          = [local.security_group_ingress_policy_id] 
       aws_integration_ids_to_attach = [local.dev_aws_integration_id]
     },
-    "spacelift-demo" = {
+    "codebuild-infra" = {
       description                   = "Manages dev infrastructure for codebuild repo."
       repository                    = "terraform-codebuild-infra"
       project_root                  = local.environment
