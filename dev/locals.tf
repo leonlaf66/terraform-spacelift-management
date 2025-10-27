@@ -18,6 +18,13 @@ locals {
       additional_project_globs      = ["common_modules/**/*"]
       policy_ids_to_attach          = [local.security_group_ingress_policy_id] 
       aws_integration_ids_to_attach = [local.dev_aws_integration_id]
+    },
+    "codebuild-infra" = {
+      description                   = "Manages dev infrastructure for codebuild repo."
+      repository                    = "terraform-codebuild-infra"
+      project_root                  = local.environment
+      additional_project_globs      = ["modules/**/*"]
+      aws_integration_ids_to_attach = [local.dev_aws_integration_id]
     }
   }
 }
