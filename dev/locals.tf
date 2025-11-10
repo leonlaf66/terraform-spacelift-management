@@ -25,6 +25,12 @@ locals {
       project_root                  = local.environment
       additional_project_globs      = ["modules/**/*"]
       aws_integration_ids_to_attach = [local.dev_aws_integration_id]
+    },
+    "codebuild-infra" = {
+      description                   = "Manages dev infrastructure for nodejs codebuild project."
+      repository                    = "terraform-codebuild-demo"
+      project_root                  = local.environment
+      aws_integration_ids_to_attach = [local.dev_aws_integration_id]
     }
   }
 }
