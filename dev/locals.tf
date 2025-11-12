@@ -33,5 +33,12 @@ locals {
       additional_project_globs      = []
       aws_integration_ids_to_attach = [local.dev_aws_integration_id]
     }
+    "ec-demo" = {
+      description                   = "Manages dev infrastructure for ecs demo."
+      repository                    = "terraform-ecs-demo"
+      project_root                  = local.environment
+      additional_project_globs      = []
+      aws_integration_ids_to_attach = [local.dev_aws_integration_id]
+    }
   }
 }
