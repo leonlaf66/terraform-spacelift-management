@@ -58,7 +58,7 @@ locals {
     }
     "data-pipeline-demo-data-plane" = {
       description                   = "Manages data-plane application demo."
-      repository                    = "data-pipeline-demo-data-plane"
+      repository                    = "data-pipeline-demo-project"
       project_root                  = "${local.environment}/data-plane"
       additional_project_globs      = []
       aws_integration_ids_to_attach = [local.dev_aws_integration_id]
