@@ -49,16 +49,16 @@ locals {
       context_ids_to_attach         = ["databricks-accounts-provider-creds","databricks-demo"]
     }
     "kraken-demo-infra" = {
-      description                   = "Manages infrastructure for Kraken demo."
-      repository                    = "kraken-demo-project"
+      description                   = "Manages data-pipeline infrastructure demo."
+      repository                    = "data-pipeline-demo-project"
       project_root                  = "${local.environment}/infra"
       additional_project_globs      = []
       aws_integration_ids_to_attach = [local.dev_aws_integration_id]
       context_ids_to_attach         = ["kraken-demo-${local.environment}"]
     }
     "kraken-demo-data-plane" = {
-      description                   = "Manages data-plane for Kraken demo."
-      repository                    = "kraken-demo-project"
+      description                   = "Manages data-plane application demo."
+      repository                    = "data-pipeline-demo-project"
       project_root                  = "${local.environment}/data-plane"
       additional_project_globs      = []
       aws_integration_ids_to_attach = [local.dev_aws_integration_id]
