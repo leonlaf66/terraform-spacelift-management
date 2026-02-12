@@ -49,7 +49,7 @@ locals {
       aws_integration_ids_to_attach = [local.dev_aws_integration_id]
       context_ids_to_attach         = ["databricks-accounts-provider-creds","databricks-demo"]
     }
-    "data-pipeline-demo-data-plane" = {
+    "azure-test" = {
       description                   = "Manages data-plane application demo."
       repository                    = "terraform-azure-test"
       project_root                  = local.environment
