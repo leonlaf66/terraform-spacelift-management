@@ -50,11 +50,11 @@ locals {
       context_ids_to_attach         = ["databricks-accounts-provider-creds","databricks-demo"]
     }
     "azure-test" = {
-      description                    = "Manages data-plane application demo."
-      repository                     = "terraform-azure-test"
-      project_root                   = local.environment
-      additional_project_globs       = []
-      zure_integration_ids_to_attach = [local.dev_azure_integration_id]
+      description                     = "Manages data-plane application demo."
+      repository                      = "terraform-azure-test"
+      project_root                    = local.environment
+      additional_project_globs        = []
+      azure_integration_ids_to_attach = [local.dev_azure_integration_id]
     }
   }
 }
