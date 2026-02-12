@@ -4,6 +4,7 @@ locals {
   environment                   = "dev"
   github_action_deploy          = true
   dev_aws_integration_id           = "01K48A89P24CVYM1MVETR4YZ19"
+  dev_azure_integration_id         = "01KH70KYQZ69XG8H7VN964277W"
   security_group_ingress_policy_id = "security-group-port-policy"
   common_labels                 = {
     "env"        = "dev",
@@ -63,6 +64,13 @@ locals {
       additional_project_globs      = []
       aws_integration_ids_to_attach = [local.dev_aws_integration_id]
       context_ids_to_attach         = ["kraken-demo-${local.environment}"]
+    }
+    "data-pipeline-demo-data-plane" = {
+      description                   = "Manages data-plane application demo."
+      repository                    = "terraform-azure-test"
+      project_root                  = local.environment
+      additional_project_globs      = []
+      aws_integration_ids_to_attach = [local.dev_azure_integration_id]
     }
   }
 }
