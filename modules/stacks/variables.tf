@@ -147,3 +147,21 @@ variable "environment" {
   type        = string
   description = "The project environment"
 }
+
+variable "azure_integration_ids_to_attach" {
+  type        = list(string)
+  description = "A list of Spacelift Azure Integration IDs to attach to this stack."
+  default     = []
+}
+
+variable "azure_attachment_read" {
+  type        = bool
+  description = "Whether the attached Azure integrations should have read access."
+  default     = true
+}
+
+variable "azure_attachment_write" {
+  type        = bool
+  description = "Whether the attached Azure integrations should have write access."
+  default     = true
+}

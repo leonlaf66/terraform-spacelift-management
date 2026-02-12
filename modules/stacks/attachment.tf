@@ -20,3 +20,12 @@ resource "spacelift_aws_integration_attachment" "this" {
   read           = var.aws_attachment_read
   write          = var.aws_attachment_write
 }
+
+resource "spacelift_azure_integration_attachment" "this" {
+  for_each = toset(var.azure_integration_ids_to_attach)
+
+  integration_id = each.key
+  stack_id       = spacelift_stack.app.id
+  read           = var.azure_attachment_read
+  write          = var.azure_attachment_write
+}
