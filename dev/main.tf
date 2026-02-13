@@ -4,6 +4,7 @@ module "spacelift_stacks" {
   stack_name               = "${each.key}-${local.environment}"
   repository               = each.value.repository
   branch                   = local.dev_branch
+  space_id                 = each.value.space_id
   project_root             = each.value.project_root
   description              = each.value.description
   environment              = local.environment
