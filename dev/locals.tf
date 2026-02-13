@@ -1,13 +1,12 @@
 locals {
-  dev_space_id                  = "aws-dev-01K5CD5P72YQ542KFHQVCZYJDW"
-  dev_branch                    = "main"
-  environment                   = "dev"
-  github_action_deploy          = true
+  dev_branch                       = "main"
+  environment                      = "dev"
+  github_action_deploy             = true
   dev_aws_integration_id           = "01K48A89P24CVYM1MVETR4YZ19"
   dev_azure_integration_id         = "01KH70KYQZ69XG8H7VN964277W"
   security_group_ingress_policy_id = "security-group-port-policy"
-  common_labels                 = {
-    "env"        = "dev",
+  common_labels                    = {
+    "env"        = local.environment,
     "managed-by" = "terraform"
   }
 
@@ -15,6 +14,7 @@ locals {
     "spacelift-demo" = {
       description                   = "Manages dev infrastructure for the spacelift demo."
       repository                    = "spacelift-demo"
+      space_id                      = var.dev_space_id["aws"]
       project_root                  = local.environment
       additional_project_globs      = ["common_modules/**/*"]
       policy_ids_to_attach          = [local.security_group_ingress_policy_id] 
@@ -23,6 +23,7 @@ locals {
     "codebuild-infra" = {
       description                   = "Manages dev infrastructure for codebuild repo."
       repository                    = "terraform-codebuild-infra"
+      space_id                      = var.dev_space_id["aws"]
       project_root                  = local.environment
       additional_project_globs      = ["modules/**/*"]
       aws_integration_ids_to_attach = [local.dev_aws_integration_id]
@@ -30,6 +31,7 @@ locals {
     "nodejs-codebuild" = {
       description                   = "Manages dev infrastructure for nodejs codebuild project."
       repository                    = "terraform-codebuild-demo"
+      space_id                      = var.dev_space_id["aws"]
       project_root                  = local.environment
       additional_project_globs      = []
       aws_integration_ids_to_attach = [local.dev_aws_integration_id]
@@ -37,6 +39,7 @@ locals {
     "ec-demo" = {
       description                   = "Manages dev infrastructure for ecs demo."
       repository                    = "terraform-ecs-demo"
+      space_id                      = var.dev_space_id["aws"]
       project_root                  = local.environment
       additional_project_globs      = []
       aws_integration_ids_to_attach = [local.dev_aws_integration_id]
@@ -44,17 +47,19 @@ locals {
     "dbx-workspace-demo" = {
       description                   = "Manages infrastructure for databricks demo workspace."
       repository                    = "databricks-workspace-demo"
+      space_id                      = var.dev_space_id["aws"]
       project_root                  = local.environment
       additional_project_globs      = []
       aws_integration_ids_to_attach = [local.dev_aws_integration_id]
       context_ids_to_attach         = ["databricks-accounts-provider-creds","databricks-demo"]
     }
-    "data-pipeline-demo-data-plane" = {
-      description                   = "Manages data-plane application demo."
-      repository                    = "terraform-azure-test"
-      project_root                  = local.environment
-      additional_project_globs      = []
-      aws_integration_ids_to_attach = [local.dev_azure_integration_id]
+    "azure-test" = {
+      description                     = "Manages data-plane application demo."
+      repository                      = "terraform-azure-test"
+      space_id                        = var.dev_space_id["azure"]
+      project_root                    = local.environment
+      additional_project_globs        = []
+      azure_integration_ids_to_attach = [local.dev_azure_integration_id]
     }
   }
 }

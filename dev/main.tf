@@ -4,7 +4,7 @@ module "spacelift_stacks" {
   stack_name               = "${each.key}-${local.environment}"
   repository               = each.value.repository
   branch                   = local.dev_branch
-  space_id                 = local.dev_space_id
+  space_id                 = each.value.space_id
   project_root             = each.value.project_root
   description              = each.value.description
   environment              = local.environment
@@ -16,7 +16,8 @@ module "spacelift_stacks" {
     { "app" = each.key }
   )
 
-  policy_ids_to_attach          = lookup(each.value, "policy_ids_to_attach", [])
-  context_ids_to_attach         = lookup(each.value, "context_ids_to_attach", [])
-  aws_integration_ids_to_attach = lookup(each.value, "aws_integration_ids_to_attach", [])
+  policy_ids_to_attach            = lookup(each.value, "policy_ids_to_attach", [])
+  context_ids_to_attach           = lookup(each.value, "context_ids_to_attach", [])
+  aws_integration_ids_to_attach   = lookup(each.value, "aws_integration_ids_to_attach", [])
+  azure_integration_ids_to_attach = lookup(each.value, "azure_integration_ids_to_attach", [])
 }
