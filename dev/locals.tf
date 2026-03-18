@@ -5,61 +5,20 @@ locals {
   dev_aws_integration_id           = "01K48A89P24CVYM1MVETR4YZ19"
   dev_azure_integration_id         = "01KH70KYQZ69XG8H7VN964277W"
   security_group_ingress_policy_id = "security-group-port-policy"
-  common_labels                    = {
-    "env"        = local.environment,
+  common_labels = {
+    "env"        = local.environment
     "managed-by" = "terraform"
   }
 
-  stacks = {
-    "spacelift-demo" = {
-      description                   = "Manages dev infrastructure for the spacelift demo."
-      repository                    = "spacelift-demo"
-      space_id                      = var.dev_space_id["aws"]
-      project_root                  = local.environment
-      additional_project_globs      = ["common_modules/**/*"]
-      policy_ids_to_attach          = [local.security_group_ingress_policy_id] 
-      aws_integration_ids_to_attach = [local.dev_aws_integration_id]
-    },
-    "codebuild-infra" = {
-      description                   = "Manages dev infrastructure for codebuild repo."
-      repository                    = "terraform-codebuild-infra"
-      space_id                      = var.dev_space_id["aws"]
-      project_root                  = local.environment
-      additional_project_globs      = ["modules/**/*"]
-      aws_integration_ids_to_attach = [local.dev_aws_integration_id]
-    },
-    "nodejs-codebuild" = {
-      description                   = "Manages dev infrastructure for nodejs codebuild project."
-      repository                    = "terraform-codebuild-demo"
-      space_id                      = var.dev_space_id["aws"]
-      project_root                  = local.environment
-      additional_project_globs      = []
-      aws_integration_ids_to_attach = [local.dev_aws_integration_id]
-    }
-    "ec-demo" = {
-      description                   = "Manages dev infrastructure for ecs demo."
-      repository                    = "terraform-ecs-demo"
-      space_id                      = var.dev_space_id["aws"]
-      project_root                  = local.environment
-      additional_project_globs      = []
-      aws_integration_ids_to_attach = [local.dev_aws_integration_id]
-    }
-    "dbx-workspace-demo" = {
-      description                   = "Manages infrastructure for databricks demo workspace."
-      repository                    = "databricks-workspace-demo"
-      space_id                      = var.dev_space_id["aws"]
-      project_root                  = local.environment
-      additional_project_globs      = []
-      aws_integration_ids_to_attach = [local.dev_aws_integration_id]
-      context_ids_to_attach         = ["databricks-accounts-provider-creds","databricks-demo"]
-    }
-    "azure-test" = {
-      description                     = "Manages data-plane application demo."
-      repository                      = "terraform-azure-test"
-      space_id                        = var.dev_space_id["azure"]
-      project_root                    = local.environment
-      additional_project_globs        = []
-      azure_integration_ids_to_attach = [local.dev_azure_integration_id]
-    }
-  }
+  stacks = module.inventory.stacks
+}
+
+module "inventory" {
+  source = "../Inventory"
+
+  environment              = local.environment
+  space_ids                = var.dev_space_id
+  aws_integration_id       = local.dev_aws_integration_id
+  azure_integration_id     = local.dev_azure_integration_id
+  security_group_policy_id = local.security_group_ingress_policy_id
 }
