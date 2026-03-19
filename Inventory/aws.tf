@@ -27,7 +27,7 @@ locals {
       aws_integration_ids_to_attach = [var.aws_integration_id]
     }
 
-    "ecs-demo" = {
+    "ec-demo" = {
       description                   = "Manages ${var.environment} infrastructure for ecs demo."
       repository                    = "terraform-ecs-demo"
       space_id                      = var.space_ids["aws"]
