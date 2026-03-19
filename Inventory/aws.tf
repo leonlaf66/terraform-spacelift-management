@@ -27,13 +27,14 @@ locals {
       aws_integration_ids_to_attach = [var.aws_integration_id]
     }
 
-    "ec-demo" = {
+    "ecs-demo" = {
       description                   = "Manages ${var.environment} infrastructure for ecs demo."
       repository                    = "terraform-ecs-demo"
       space_id                      = var.space_ids["aws"]
       project_root                  = var.environment
       additional_project_globs      = []
       aws_integration_ids_to_attach = [var.aws_integration_id]
+      policy_ids_to_attach          = compact([var.deny_working_branches])
     }
   }
 }
