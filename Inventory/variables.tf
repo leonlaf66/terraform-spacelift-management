@@ -25,8 +25,8 @@ variable "security_group_policy_id" {
   default     = ""
 }
 
-variable "deny_working_branches" {
+variable "deny_working_branches_policy_id" {
   type        = string
   description = "Spacelift policy ID for the security-group-port ingress policy."
-  default     = "deny-working-branches"
+  default     = ""
 }
