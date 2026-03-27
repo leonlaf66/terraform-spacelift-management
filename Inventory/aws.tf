@@ -5,7 +5,6 @@ locals {
       repository                    = "spacelift-demo"
       space_id                      = var.space_ids["aws"]
       project_root                  = var.environment
-      additional_project_globs      = ["common_modules/**/*"]
       policy_ids_to_attach          = compact([var.security_group_policy_id])
       aws_integration_ids_to_attach = [var.aws_integration_id]
     }
@@ -14,7 +13,6 @@ locals {
       repository                    = "terraform-codebuild-infra"
       space_id                      = var.space_ids["aws"]
       project_root                  = var.environment
-      additional_project_globs      = ["modules/**/*"]
       aws_integration_ids_to_attach = [var.aws_integration_id]
     }
 
@@ -23,7 +21,6 @@ locals {
       repository                    = "terraform-codebuild-demo"
       space_id                      = var.space_ids["aws"]
       project_root                  = var.environment
-      additional_project_globs      = ["modules/**/*"]
       aws_integration_ids_to_attach = [var.aws_integration_id]
     }
 
@@ -32,7 +29,7 @@ locals {
       repository                    = "terraform-ecs-demo"
       space_id                      = var.space_ids["aws"]
       project_root                  = var.environment
-      additional_project_globs      = ["modules/**/*", "Inventory/*"]
+      additional_project_globs      = ["Inventory/*"]
       aws_integration_ids_to_attach = [var.aws_integration_id]
       policy_ids_to_attach          = compact([var.deny_working_branches_policy_id])
     }

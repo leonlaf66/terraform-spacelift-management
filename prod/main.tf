@@ -1,5 +1,5 @@
 module "spacelift_stacks" {
-  source = "../modules/stacks"
+  source = "git::https://github.com/leonlaf66/terraform-stack-management-module?ref=1.0.0"
   for_each                 = local.stacks
   stack_name               = "${each.key}-${local.environment}"
   repository               = each.value.repository

@@ -1,5 +1,5 @@
 module "spacelift_stacks" {
-  source = "../modules/stacks"
+  source = "git::https://github.com/leonlaf66/terraform-stack-management-module?ref=1.0.0"
   for_each                 = local.stacks
   stack_name               = "${each.key}-${local.environment}"
   repository               = each.value.repository
@@ -8,7 +8,7 @@ module "spacelift_stacks" {
   project_root             = each.value.project_root
   description              = each.value.description
   environment              = local.environment
-  additional_project_globs = each.value.additional_project_globs
+  additional_project_globs = try(each.value.additional_project_globs, [])
   github_action_deploy     = local.github_action_deploy
 
   common_labels = merge(
